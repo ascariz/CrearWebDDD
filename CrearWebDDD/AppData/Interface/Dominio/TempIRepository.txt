@@ -1,0 +1,15 @@
+﻿using [Proyecto].Data.Models;
+using [Proyecto].DTO;
+using [Proyecto].Interface.Dominio.Base;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace [Proyecto].Interface.Dominio
+{
+    public interface I[Class]Repository : IBaseRepository<[Class]Dto, [Class]>
+    {
+    }
+}

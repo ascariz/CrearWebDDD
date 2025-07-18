@@ -1,0 +1,49 @@
+﻿using Microsoft.Extensions.Caching.Memory;
+using [Proyecto].Data.Models;
+using [Proyecto].DTO;
+using [Proyecto].Interface.Aplicacion;
+using [Proyecto].Interface.Dominio;
+using [Proyecto].Service.Base;
+
+namespace [Proyecto].Service
+{
+    public class [Class]Service :  BaseService<[Class]Dto, [Class], I[Class]Repository>, I[Class]Service
+    {
+        private I[Class]Repository _repo;
+        private readonly IMemoryCache _memoryCache;
+
+        public [Class]Service(I[Class]Repository repo, IMemoryCache memoryCache) : base(repo, memoryCache)
+        {
+            _repo = repo;
+            _memoryCache = memoryCache;
+        }
+
+        /// <summary>
+        /// validadcion  [Class]
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public bool Validacion([Class]Dto dto)
+        {
+            // ejemplo
+            // if (dto.LuJuHoraEntrada < dto.LuJuHoraSalida)
+            //     return false;
+
+            return true;
+        }
+        /// <summary>
+        /// duplicado [Class]
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns></returns>
+        public [Class]Dto EsDuplicado(string texto)
+        {
+            //var dto = _repo.Find(x => x.Descripcion == texto);
+            //if (dto != null)
+            //{               
+            //    return dto;
+            //}
+            return new [Class]Dto();
+        }
+    }
+}

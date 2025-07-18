@@ -1,0 +1,16 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace [Proyecto].DTO
+{
+    public class [Class]Dto
+    {
+
+        public [Class]Dto()
+        {
+           
+        }      
+
+        [Propiedades]
+    }
+}

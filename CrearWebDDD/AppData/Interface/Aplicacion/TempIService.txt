@@ -1,0 +1,22 @@
+﻿using [Proyecto].DTO;
+using [Proyecto].Interface.Aplicacion.Base;
+
+namespace [Proyecto].Interface.Aplicacion
+{
+    public interface I[Class]Service : IBaseService<[Class]Dto>
+    {
+        /// <summary>
+        /// Validaciones de la entidad [Class]
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        bool Validacion([Class]Dto dto);
+
+        /// <summary>
+        /// Duplicado de la entidad [Class]
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [Class]Dto EsDuplicado(string texto);
+    }
+}

@@ -1,0 +1,29 @@
+﻿using [Proyecto].Data.Models;
+using [Proyecto].DTO.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace [Proyecto].CrossCutting.Mappers.DtoToEntity
+{
+    public class [Class]DtoToEntityMapper : MapperBase
+    {
+        public override TOutput GetDbObjectFromEntity<TInput, TOutput>(TInput appobject)
+        {
+            if (appobject == null)
+                return default(TOutput);
+
+            var appEntity = appobject as [Class]Dto;
+            if (appEntity == null)
+                throw new InvalidCastException("Cast to type [Class]Dto has failed.");
+
+            var dbEntity = new [Class]()
+            {
+               [Propiedades]
+            };
+            return dbEntity as TOutput;
+        }
+    }
+}

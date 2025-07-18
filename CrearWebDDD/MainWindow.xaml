@@ -1,0 +1,115 @@
+﻿<Window x:Class="CrearWebDDD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrearWebDDD"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="750" ResizeMode="CanResize" WindowState="Normal">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="200*" />
+            <RowDefinition Height="100*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0"  Orientation="Horizontal">
+            <Label x:Name="LblFinal" Content="" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0"  Orientation="Horizontal" >
+            <Button x:Name="BtnCrearCarpeta" Content="Crear Carpetas" Width="100" Height="25" Margin="0,0,6,0" Click="BtnCrearCarpeta_Click"  />
+            <Button x:Name="BtnCrearEntity" Content="Crear Class de BD" Width="115" Height="25" Margin="0,0,6,0" Click="BtnCrearEntity_Click" />
+            <Button x:Name="BtnBorrarCarpetas" Content="Borrar Carpetas" Width="100" Height="25" Margin="0,0,6,0" Click="BtnBorrarCarpetas_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="1"  Orientation="Vertical" Margin="10,10,10,10" >
+            <Label Content="Nombre Proyecto" ></Label>
+            <ComboBox Name="cmbProyectos">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Intranet}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <CheckBox x:Name="cbAppPruebas" Content="Fase Pruebas" IsChecked="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="120"/>
+            <CheckBox x:Name="cbApp" Content="Crear base App" IsChecked="False" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbBackOffice" Content="Crear BackOffice" IsChecked="False" HorizontalAlignment="Left"   VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbMasterController" Content="Crear MasterController" IsChecked="False" HorizontalAlignment="Left"   VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbServicio" Content="Crear Servicio" IsChecked="true" HorizontalAlignment="Left"   VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbRepository" Content="Crear Repository" IsChecked="true" HorizontalAlignment="Left"   VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbDto" Content="Crear Dto" IsChecked="true" HorizontalAlignment="Left"   VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbVm" Content="Crear VM" IsChecked="False"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbMapper" Content="Crear Mapper" IsChecked="True"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbExcelIdiomaGenericos" Content="Crear Idioma Genericos" IsChecked="False"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <CheckBox x:Name="cbExcelIdioma" Content="Crear Idioma" IsChecked="False"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <Button x:Name="BtnCrear" Content="Crear" Width="100" Click="BtnCrear_Click" HorizontalAlignment="Center" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,0" Grid.RowSpan="2">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" >
+                <DataGrid Name="dgEntity" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Width="550" >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" >Select All</CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Name="theCheckbox"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="cbBackOffice_Checked" Unchecked="cbBackOffice_Unchecked" >BackOffice</CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsBackOffice, UpdateSourceTrigger=PropertyChanged}" Name="theCheckbox"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="cbJs_Checked" Unchecked="cbJs_Unchecked" >Js</CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsJs, UpdateSourceTrigger=PropertyChanged}" Name="theCheckbox"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox Checked="cbIsIdioma_Checked" Unchecked="cbIsIdioma_Unchecked" >IsIdioma</CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsIdioma, UpdateSourceTrigger=PropertyChanged}" Name="theCheckbox"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!--<DataGridCheckBoxColumn Header="BackOffice" Binding="{Binding IsBackOffice }" />-->
+                        <!--<DataGridCheckBoxColumn Header="Js" Binding="{Binding IsJs }" />-->
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" >
+            <Label x:Name="LblFinalError" Content="" Foreground="DarkRed" FontSize="20"/>
+        </StackPanel>
+    </Grid>
+</Window>

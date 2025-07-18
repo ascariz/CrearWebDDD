@@ -1,0 +1,23 @@
+﻿using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
+using [Proyecto].Data;
+using [Proyecto].Data.Models;
+using [Proyecto].DTO;
+using [Proyecto].Interface.Dominio;
+using [Proyecto].Repository.Base;
+using DtoToEntry = [Proyecto].CrossCutting.Mappers.DtoToEntity;
+using EntryToDto = [Proyecto].CrossCutting.Mappers.EntityToDto;
+
+namespace [Proyecto].Repository
+{
+    public class [Class]Repository : BaseRepository<[Class]Dto, [Class]>, I[Class]Repository
+    {
+        private ILogger<[Class]Repository> _log;
+
+        public [Class]Repository(IMemoryCache memoryCache, ApplicationDbContext context, ILogger<[Class]Repository> log)
+            : base(context, memoryCache)
+        {
+            _log = log;
+        }
+    }
+}

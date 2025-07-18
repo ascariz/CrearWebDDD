@@ -1,0 +1,28 @@
+﻿using [ProyectoIntranet].Controllers;
+using [ProyectoIntranet].ViewModels;
+using [Proyecto].Data.Data;
+using [Proyecto].ModelDto.Interface;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Mvc;
+using Mapster;
+using Microsoft.AspNetCore.Mvc;
+
+namespace [ProyectoIntranet].Intranet.Controllers.ApiControllers
+{
+    [Route("api/[controller]/[action]")]
+    public sealed class MasterController : BaseController<MasterController>
+    {
+        [PrivateServicio]
+
+        public MasterController(ILogger<MasterController> logger,
+            [PrivateContructorServicio]
+             )
+        {
+            _logger = logger;
+           [Servicio]
+        }
+
+        [Metodos]
+
+    }
+}
